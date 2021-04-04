@@ -1,0 +1,985 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.3" use-changelog="false" author="David Vidal" last-position="0,0" last-zoom="0.95" max-obj-count="15"
+	 default-schema="public">
+<database name="ponusdb" encoding="UTF8" is-template="false" allow-conns="true">
+</database>
+
+<tag name="commons">
+	<style id="table-body" colors="#ffffff,#ffffff,#55007f"/>
+	<style id="table-ext-body" colors="#fcfcfc,#fcfcfc,#d7d7d7"/>
+	<style id="table-name" colors="#00007f"/>
+	<style id="table-schema-name" colors="#0055ff"/>
+	<style id="table-title" colors="#ffffff,#ffffff,#55007f"/>
+	<style id="table-toggler-body" colors="#fcfcfc,#fcfcfc,#d7d7d7"/>
+	<style id="table-toggler-btns" colors="#f3f3f3,#e1e1e1,#bebebe"/>
+</tag>
+<tag name="expenses">
+	<style id="table-body" colors="#ffffff,#ffffff,#ff007f"/>
+	<style id="table-ext-body" colors="#fcfcfc,#fcfcfc,#d7d7d7"/>
+	<style id="table-name" colors="#ff007f"/>
+	<style id="table-schema-name" colors="#4fe00b"/>
+	<style id="table-title" colors="#ffffff,#ffffff,#ff007f"/>
+	<style id="table-toggler-body" colors="#fcfcfc,#fcfcfc,#d7d7d7"/>
+	<style id="table-toggler-btns" colors="#f3f3f3,#e1e1e1,#bebebe"/>
+</tag>
+<tag name="attendance">
+	<style id="table-body" colors="#ffffff,#ffffff,#7ad84e"/>
+	<style id="table-ext-body" colors="#fcfcfc,#fcfcfc,#d7d7d7"/>
+	<style id="table-name" colors="#7ad84e"/>
+	<style id="table-schema-name" colors="#9dc847"/>
+	<style id="table-title" colors="#ffffff,#ffffff,#7ad84e"/>
+	<style id="table-toggler-body" colors="#fcfcfc,#fcfcfc,#d7d7d7"/>
+	<style id="table-toggler-btns" colors="#f3f3f3,#e1e1e1,#bebebe"/>
+</tag>
+<tag name="payroll">
+	<style id="table-body" colors="#ffffff,#ffffff,#ff3737"/>
+	<style id="table-ext-body" colors="#fcfcfc,#fcfcfc,#d7d7d7"/>
+	<style id="table-name" colors="#ff3737"/>
+	<style id="table-schema-name" colors="#a517bf"/>
+	<style id="table-title" colors="#ffffff,#ffffff,#ff3737"/>
+	<style id="table-toggler-body" colors="#fcfcfc,#fcfcfc,#d7d7d7"/>
+	<style id="table-toggler-btns" colors="#f3f3f3,#e1e1e1,#bebebe"/>
+</tag>
+<tag name="profees">
+	<style id="table-body" colors="#fcfcfc,#fcfcfc,#f00606"/>
+	<style id="table-ext-body" colors="#fcfcfc,#fcfcfc,#d7d7d7"/>
+	<style id="table-name" colors="#f00606"/>
+	<style id="table-schema-name" colors="#f06b1c"/>
+	<style id="table-title" colors="#55ff00,#55ff00,#f00606"/>
+	<style id="table-toggler-body" colors="#fcfcfc,#fcfcfc,#d7d7d7"/>
+	<style id="table-toggler-btns" colors="#f3f3f3,#e1e1e1,#bebebe"/>
+	<comment><![CDATA[Professional fees.]]></comment>
+</tag>
+<schema name="public" layer="0" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<sequence name="sq_typedoi_id" cycle="false" start="1" increment="1" min-value="0" max-value="9223372036854775807" cache="1">
+	<schema name="public"/>
+</sequence>
+
+<table name="type_retire" layer="0" collapse-mode="1" pagination="true" attribs-page="0" ext-attribs-page="0" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<tag name="commons"/>
+	<position x="1460" y="0"/>
+	<column name="id" not-null="true">
+		<type name="char" length="2"/>
+	</column>
+	<column name="title" not-null="true">
+		<type name="varchar" length="50"/>
+	</column>
+	<column name="afpnet" not-null="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="rate" not-null="true">
+		<type name="decimal" length="7" precision="6"/>
+	</column>
+	<column name="trash" not-null="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="uq_typeretire_title" type="uq-constr" table="public.type_retire">
+		<columns names="title" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="TypeRetire_pk" type="pk-constr" table="public.type_retire">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[id•title•afpnet•rate•trash⸣
+02•SNP•FALSE•0.13•FALSE⸣
+14•SNP IND.•FALSE•0.13•FALSE⸣
+21•INTEGRA•TRUE•0.00•FALSE⸣
+22•HORIZONTE•TRUE•0.00•FALSE⸣
+23•PROFUTURO•TRUE•0.00•FALSE⸣
+24•PRIMA•TRUE•0.00•FALSE⸣
+25•HABITAT•TRUE•0.00•FALSE⸣
+98•PENDIENTE•FALSE•0.00•FALSE⸣
+99•NO APLICA•FALSE•0.00•FALSE]]>
+	</initial-data>
+</table>
+
+<usertype name="tax_role" configuration="enumeration">
+	<schema name="public"/>
+	<enumeration values="FIFTH,FOURTH,BOTH"/>
+</usertype>
+
+<sequence name="sq_employee_id" cycle="false" start="1" increment="1" min-value="0" max-value="9223372036854775807" cache="1">
+	<schema name="public"/>
+</sequence>
+
+<table name="employee" layer="0" collapse-mode="1" max-obj-count="24" z-value="0">
+	<schema name="public"/>
+	<tag name="commons"/>
+	<position x="840" y="20"/>
+	<column name="id" not-null="true" sequence="public.sq_employee_id">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="lastName1" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="lastName2">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="firstName" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="middleName">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="doiNum" not-null="true">
+		<type name="varchar" length="15"/>
+	</column>
+	<column name="ruc">
+		<type name="char" length="11"/>
+	</column>
+	<column name="cci">
+		<type name="char" length="20"/>
+	</column>
+	<column name="taxation" not-null="true">
+		<type name="public.tax_role" length="0"/>
+	</column>
+	<column name="wage" not-null="true">
+		<type name="decimal" length="14" precision="2"/>
+	</column>
+	<column name="withhold" not-null="true">
+		<type name="decimal" length="14" precision="2"/>
+	</column>
+	<column name="accumulator" not-null="true">
+		<type name="decimal" length="14" precision="2"/>
+	</column>
+	<column name="dateBegin" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="dateUntil">
+		<type name="date" length="0"/>
+	</column>
+	<column name="drive">
+		<type name="varchar" length="45"/>
+	</column>
+	<column name="sctr" not-null="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="trash" not-null="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="email" not-null="true">
+		<type name="varchar" length="320"/>
+	</column>
+	<constraint name="Employee_pk" type="pk-constr" table="public.employee">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="doiType" index="5"/>
+		<object name="retirement" index="13"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="type_doi_fk" index="1"/>
+		<object name="type_retire_fk" index="2"/>
+	</customidxs>
+</table>
+
+<table name="type_doi" layer="0" collapse-mode="1" pagination="true" attribs-page="0" ext-attribs-page="0" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<tag name="commons"/>
+	<position x="1260" y="180"/>
+	<column name="id" not-null="true" sequence="public.sq_typedoi_id">
+		<type name="bigint" length="36"/>
+	</column>
+	<column name="title" not-null="true">
+		<type name="varchar" length="10"/>
+	</column>
+	<column name="plameID" not-null="true">
+		<type name="char" length="2"/>
+	</column>
+	<column name="afpID" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="trash" not-null="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="uq_title" type="uq-constr" table="public.type_doi">
+		<columns names="title" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="TipoDOI_pk" type="pk-constr" table="public.type_doi">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[id•title•plameID•afpID•trash⸣
+•DNI•01•0•FALSE⸣
+•CEX•04•1•FALSE⸣
+•PAS•07•4•FALSE⸣
+•REF•09•6•FALSE⸣
+•PNC•11•3•FALSE⸣
+•PTP•23•6•FALSE]]>
+	</initial-data>
+</table>
+
+<relationship name="employee_has_retirement" type="rel1n" layer="0"
+	 src-col-pattern="retirement"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#37bd27"
+	 src-table="public.type_retire"
+	 dst-table="public.employee"
+	 src-required="true" dst-required="false"
+	upd-action="CASCADE"
+	del-action="RESTRICT">
+	<label ref-type="name-label">
+		<position x="12.8744" y="-26.5792"/>
+	</label>
+</relationship>
+
+<table name="cost_center" layer="0" collapse-mode="1" pagination="true" attribs-page="0" ext-attribs-page="0" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<tag name="expenses"/>
+	<position x="1480" y="180"/>
+	<column name="id" not-null="true">
+		<type name="char" length="5"/>
+	</column>
+	<column name="title" not-null="true">
+		<type name="varchar" length="45"/>
+	</column>
+	<column name="trash" not-null="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="CostCenter_pk" type="pk-constr" table="public.cost_center">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[id•title•trash⸣
+ADMIN•ADMINISTRATIVO•FALSE⸣
+11000•INSPECCIONES•FALSE⸣
+21000•OFICIOS MTC•FALSE⸣
+31000•SUNARP•FALSE⸣
+91000•OTRAS VENTAS•FALSE⸣
+99999•POR DISTRIBUIR•FALSE⸣
+41000•INFORMES•FALSE⸣
+01000•VENTAS Y COBRANZAS•FALSE]]>
+	</initial-data>
+</table>
+
+<table name="transportation" layer="0" collapse-mode="1" pagination="true" attribs-page="0" ext-attribs-page="0" max-obj-count="8" z-value="0">
+	<schema name="public"/>
+	<tag name="expenses"/>
+	<position x="1380" y="380"/>
+	<column name="id" not-null="true">
+		<type name="char" length="36"/>
+	</column>
+	<column name="taxDate" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="route" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="remarks" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="amount" not-null="true">
+		<type name="decimal" length="14" precision="2"/>
+	</column>
+	<constraint name="Transportation_pk" type="pk-constr" table="public.transportation">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="employee" index="4"/>
+		<object name="id_cost_center" index="6"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="cost_center_fk" index="2"/>
+		<object name="employee_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="transp_belongs_employee" type="rel1n" layer="0"
+	 src-col-pattern="employee"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#5f5988"
+	 src-table="public.employee"
+	 dst-table="public.transportation"
+	 src-required="true" dst-required="false"
+	upd-action="CASCADE"
+	del-action="RESTRICT">
+	<label ref-type="name-label">
+		<position x="23.3744" y="18.7417"/>
+	</label>
+</relationship>
+
+<relationship name="employee_has_tdoi" type="rel1n" layer="0"
+	 src-col-pattern="doiType"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#06f234"
+	 src-table="public.type_doi"
+	 dst-table="public.employee"
+	 src-required="true" dst-required="false"
+	upd-action="CASCADE"
+	del-action="RESTRICT">
+	<label ref-type="name-label">
+		<position x="-4.12558" y="-19.8432"/>
+	</label>
+</relationship>
+
+<relationship name="transp_has_costcenter" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#daae89"
+	 src-table="public.cost_center"
+	 dst-table="public.transportation"
+	 src-required="true" dst-required="false"
+	upd-action="CASCADE"
+	del-action="RESTRICT">
+	<label ref-type="name-label">
+		<position x="-0.593554" y="-24.9781"/>
+	</label>
+</relationship>
+
+<table name="attendance" layer="0" collapse-mode="1" pagination="true" attribs-page="0" ext-attribs-page="0" max-obj-count="10" z-value="0">
+	<schema name="public"/>
+	<tag name="attendance"/>
+	<position x="1400" y="620"/>
+	<column name="id" not-null="true">
+		<type name="char" length="36"/>
+	</column>
+	<column name="taxDate" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="checkin">
+		<type name="time" length="0"/>
+	</column>
+	<column name="checkout">
+		<type name="time" length="0"/>
+	</column>
+	<column name="total" not-null="true">
+		<type name="decimal" length="8" precision="6"/>
+	</column>
+	<column name="overtime25" not-null="true">
+		<type name="decimal" length="8" precision="6"/>
+	</column>
+	<column name="overtime35" not-null="true">
+		<type name="decimal" length="8" precision="6"/>
+	</column>
+	<column name="night" not-null="true">
+		<type name="decimal" length="8" precision="6"/>
+	</column>
+	<constraint name="attendance_pk" type="pk-constr" table="public.attendance">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="employee" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="employee_fk" index="0"/>
+	</customidxs>
+</table>
+
+<relationship name="employee_attends_work" type="rel1n" layer="0"
+	 src-col-pattern="employee"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#78260d"
+	 src-table="public.employee"
+	 dst-table="public.attendance"
+	 src-required="true" dst-required="false"
+	upd-action="CASCADE"
+	del-action="RESTRICT">
+	<label ref-type="name-label">
+		<position x="25.6363" y="9.91774"/>
+	</label>
+</relationship>
+
+<table name="absence" layer="0" collapse-mode="1" pagination="true" attribs-page="0" ext-attribs-page="0" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<tag name="attendance"/>
+	<position x="1140" y="680"/>
+	<column name="id" not-null="true">
+		<type name="char" length="36"/>
+	</column>
+	<column name="dateFrom" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="dateUntil">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="absence_pk" type="pk-constr" table="public.absence">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="employee" index="2"/>
+		<object name="type" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="employee_fk" index="1"/>
+		<object name="type_absence_fk" index="0"/>
+	</customidxs>
+</table>
+
+<table name="type_absence" layer="0" collapse-mode="1" pagination="true" attribs-page="0" ext-attribs-page="0" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<tag name="attendance"/>
+	<position x="1160" y="960"/>
+	<column name="id" not-null="true">
+		<type name="char" length="2"/>
+	</column>
+	<column name="title" not-null="true">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="perfect" not-null="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="paid" not-null="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="social" not-null="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="type_absence_pk" type="pk-constr" table="public.type_absence">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[id•title•perfect•paid•social⸣
+01•SANCIÓN•TRUE•FALSE•FALSE⸣
+05•LICENCA SIN GOCE•TRUE•FALSE•FALSE⸣
+06•FORTUITO•TRUE•FALSE•FALSE⸣
+07•INJUSTIFICADA•TRUE•FALSE•FALSE⸣
+23•VACACIONES•FALSE•TRUE•FALSE⸣
+26•LICENCIA CON GOCE•FALSE•TRUE•FALSE]]>
+	</initial-data>
+</table>
+
+<relationship name="absence_isof_type" type="rel1n" layer="0"
+	 src-col-pattern="type"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#f76d14"
+	 src-table="public.type_absence"
+	 dst-table="public.absence"
+	 src-required="true" dst-required="false"
+	upd-action="CASCADE"
+	del-action="RESTRICT">
+	<label ref-type="name-label">
+		<position x="4.63145" y="-11.0823"/>
+	</label>
+</relationship>
+
+<relationship name="employee_has_absence" type="rel1n" layer="0"
+	 src-col-pattern="employee"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#540574"
+	 src-table="public.employee"
+	 dst-table="public.absence"
+	 src-required="true" dst-required="false"
+	upd-action="CASCADE"
+	del-action="RESTRICT">
+	<label ref-type="name-label">
+		<position x="-7.83977" y="-18.6823"/>
+	</label>
+</relationship>
+
+<table name="tax_period" layer="0" collapse-mode="1" pagination="true" attribs-page="0" ext-attribs-page="0" max-obj-count="7" z-value="0">
+	<schema name="public"/>
+	<tag name="commons"/>
+	<position x="480" y="940"/>
+	<column name="id" not-null="true">
+		<type name="char" length="6"/>
+	</column>
+	<column name="year" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="month" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="dateFrom" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="dateUntil" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="closed" not-null="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="uq_year_month" type="uq-constr" table="public.tax_period">
+		<columns names="year,month" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="tax_period_pk" type="pk-constr" table="public.tax_period">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[id•year•month•dateFrom•dateUntil•closed⸣
+202101•2021•1•2021-01-01•2021-01-31•FALSE⸣
+202102•2021•2•2021-02-01•2021-02-28•FALSE⸣
+202103•2021•3•2021-03-01•2021-03-31•FALSE⸣
+202104•2021•4•2021-04-01•2021-04-30•FALSE⸣
+202105•2021•5•2021-05-01•2021-05-31•FALSE⸣
+202106•2021•6•2021-06-01•2021-06-30•FALSE⸣
+202107•2021•7•2021-07-01•2021-07-31•FALSE⸣
+202108•2021•8•2021-08-01•2021-08-31•FALSE⸣
+202109•2021•9•2021-09-01•2021-09-30•FALSE⸣
+202110•2021•10•2021-10-01•2021-10-31•FALSE⸣
+202111•2021•11•2021-11-01•2021-11-30•FALSE⸣
+202112•2021•12•2021-12-01•2021-12-31•FALSE]]>
+	</initial-data>
+</table>
+
+<sequence name="sq_payroll" cycle="false" start="21000001" increment="1" min-value="19000001" max-value="99999999" cache="10">
+	<schema name="public"/>
+</sequence>
+
+<table name="payroll" layer="0" collapse-mode="1" max-obj-count="44" z-value="0">
+	<schema name="public"/>
+	<tag name="payroll"/>
+	<position x="400" y="0"/>
+	<column name="id" not-null="true" sequence="public.sq_payroll">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="employer_name" not-null="true">
+		<type name="varchar" length="200"/>
+	</column>
+	<column name="employer_taxid" not-null="true">
+		<type name="char" length="11"/>
+	</column>
+	<column name="employer_address" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="employee_name" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="employee_doiTax" not-null="true">
+		<type name="char" length="2"/>
+	</column>
+	<column name="employee_doiNum" not-null="true">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="employee_position" not-null="true">
+		<type name="varchar" length="200"/>
+	</column>
+	<column name="employee_category" not-null="true">
+		<type name="varchar" length="200"/>
+	</column>
+	<column name="employee_retire_tax" not-null="true">
+		<type name="char" length="2"/>
+	</column>
+	<column name="employee_retire_name" not-null="true">
+		<type name="varchar" length="50"/>
+	</column>
+	<column name="employee_cuspp">
+		<type name="varchar" length="12"/>
+	</column>
+	<column name="employee_dateBegin" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="employee_role" not-null="true">
+		<type name="public.tax_role" length="0"/>
+	</column>
+	<column name="days_worked" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="days_absentUnpaid" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="days_absentPaid" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="time_std" not-null="true">
+		<type name="decimal" length="5" precision="2"/>
+	</column>
+	<column name="time_x25" not-null="true">
+		<type name="decimal" length="5" precision="2"/>
+	</column>
+	<column name="time_x35" not-null="true">
+		<type name="decimal" length="5" precision="2"/>
+	</column>
+	<column name="income" not-null="true">
+		<type name="decimal" length="14" precision="2"/>
+	</column>
+	<column name="taxable" not-null="true">
+		<type name="decimal" length="14" precision="2"/>
+	</column>
+	<column name="wageable" not-null="true">
+		<type name="decimal" length="14" precision="2"/>
+	</column>
+	<column name="retire" not-null="true">
+		<type name="decimal" length="14" precision="2"/>
+	</column>
+	<column name="health" not-null="true">
+		<type name="decimal" length="14" precision="2"/>
+	</column>
+	<column name="discount" not-null="true">
+		<type name="decimal" length="14" precision="2"/>
+	</column>
+	<column name="taxes" not-null="true">
+		<type name="decimal" length="14" precision="2"/>
+	</column>
+	<column name="payable" not-null="true">
+		<type name="decimal" length="14" precision="2"/>
+	</column>
+	<column name="assumed" not-null="true">
+		<type name="decimal" length="14" precision="2"/>
+	</column>
+	<column name="cost" not-null="true">
+		<type name="decimal" length="14" precision="2"/>
+	</column>
+	<column name="payableWords" not-null="true">
+		<type name="varchar" length="115" precision="2"/>
+	</column>
+	<column name="dateFrom" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="dateUntil" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="closure">
+		<type name="timestamp" length="0" precision="3"/>
+	</column>
+	<column name="drive" not-null="true">
+		<type name="varchar" length="45"/>
+	</column>
+	<constraint name="payroll_pk" type="pk-constr" table="public.payroll">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="employee" index="5"/>
+		<object name="period" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="employee_fk" index="1"/>
+		<object name="tax_period_fk" index="2"/>
+	</customidxs>
+</table>
+
+<usertype name="payable_role" configuration="enumeration">
+	<schema name="public"/>
+	<enumeration values="INCOME,DISCOUNT,TAX,ASSUMED,SECONDJOB"/>
+</usertype>
+
+<table name="payroll_detail" layer="0" collapse-mode="1" max-obj-count="14" z-value="0">
+	<schema name="public"/>
+	<tag name="payroll"/>
+	<position x="20" y="20"/>
+	<column name="id" not-null="true">
+		<type name="char" length="36"/>
+	</column>
+	<column name="number">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="description" not-null="true">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="taxID">
+		<type name="char" length="4"/>
+	</column>
+	<column name="payRole" not-null="true">
+		<type name="public.payable_role" length="0"/>
+	</column>
+	<column name="amount" not-null="true">
+		<type name="decimal" length="14" precision="2"/>
+	</column>
+	<column name="taxable" not-null="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="health" not-null="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="retire" not-null="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="secondEmployer">
+		<type name="char" length="11"/>
+	</column>
+	<column name="closed" not-null="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="payroll_detail_pk" type="pk-constr" table="public.payroll_detail">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="payroll" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="payroll_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="employee_has_payroll" type="rel1n" layer="0"
+	 src-col-pattern="employee"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#84d50d"
+	 src-table="public.employee"
+	 dst-table="public.payroll"
+	 src-required="true" dst-required="false"
+	upd-action="CASCADE"
+	del-action="RESTRICT">
+	<label ref-type="name-label">
+		<position x="-11.3678" y="-81.4451"/>
+	</label>
+</relationship>
+
+<relationship name="payroll_belongs_period" type="rel1n" layer="0"
+	 src-col-pattern="period"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#6b0422"
+	 src-table="public.tax_period"
+	 dst-table="public.payroll"
+	 src-required="true" dst-required="false"
+	upd-action="CASCADE"
+	del-action="RESTRICT">
+	<label ref-type="name-label">
+		<position x="2.91065" y="-14.6823"/>
+	</label>
+</relationship>
+
+<constraint name="uq_payroll_empinperiod" type="uq-constr" table="public.payroll">
+	<columns names="employee,period" ref-type="src-columns"/>
+</constraint>
+
+<relationship name="payroll_has_detail" type="rel1n" layer="0"
+	 src-col-pattern="payroll"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#5c3e26"
+	 src-table="public.payroll"
+	 dst-table="public.payroll_detail"
+	 src-required="true" dst-required="false"
+	upd-action="CASCADE"
+	del-action="RESTRICT">
+	<label ref-type="name-label">
+		<position x="-33.4939" y="17.2132"/>
+	</label>
+</relationship>
+
+<constraint name="uq_payroll_ord" type="uq-constr" table="public.payroll_detail">
+	<columns names="payroll,number" ref-type="src-columns"/>
+</constraint>
+
+<table name="type_folio" layer="0" collapse-mode="1" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<comment><![CDATA[Professional fees.]]></comment>
+	<tag name="profees"/>
+	<position x="860" y="1020"/>
+	<column name="id" not-null="true">
+		<type name="char" length="1"/>
+	</column>
+	<column name="title" not-null="true">
+		<type name="varchar" length="50"/>
+	</column>
+	<column name="trash" not-null="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="type_folio_pk" type="pk-constr" table="public.type_folio">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[id•title•trash⸣
+R•RECIBO•FALSE⸣
+N•N. CRÉDITO•FALSE⸣
+D•N. DÉBITO•FALSE⸣
+O•OTRO•FALSE]]>
+	</initial-data>
+</table>
+
+<table name="profee" layer="0" collapse-mode="1" max-obj-count="18" z-value="0">
+	<schema name="public"/>
+	<comment><![CDATA[Professional fees.]]></comment>
+	<tag name="profees"/>
+	<position x="860" y="600"/>
+	<column name="id" not-null="true">
+		<type name="char" length="36"/>
+	</column>
+	<column name="receiptSerie">
+		<type name="char" length="4"/>
+	</column>
+	<column name="receiptNumber">
+		<type name="char" length="8"/>
+	</column>
+	<column name="amount" not-null="true">
+		<type name="decimal" length="14" precision="2"/>
+	</column>
+	<column name="tax" not-null="true">
+		<type name="decimal" length="14" precision="2"/>
+	</column>
+	<column name="retireFee" not-null="true">
+		<type name="decimal" length="14" precision="2"/>
+	</column>
+	<column name="payable" not-null="true">
+		<type name="decimal" length="14" precision="2"/>
+	</column>
+	<column name="docDate" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="paidDate" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="taxDate" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="dueDate">
+		<type name="date" length="0"/>
+	</column>
+	<column name="closure">
+		<type name="timestamp" length="0" precision="3"/>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="employee" index="2"/>
+		<object name="period" index="1"/>
+		<object name="receiptType" index="3"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="employee_fk" index="2"/>
+		<object name="tax_period_fk" index="0"/>
+		<object name="type_folio_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="profee_belongs_period" type="rel1n" layer="0"
+	 src-col-pattern="period"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#52c0c0"
+	 src-table="public.tax_period"
+	 dst-table="public.profee"
+	 src-required="true" dst-required="false"
+	upd-action="CASCADE"
+	del-action="RESTRICT">
+	<label ref-type="name-label">
+		<position x="-1.39355" y="-33.5229"/>
+	</label>
+</relationship>
+
+<relationship name="profee_isof_type" type="rel1n" layer="0"
+	 src-col-pattern="receiptType"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#602cec"
+	 src-table="public.type_folio"
+	 dst-table="public.profee"
+	 src-required="true" dst-required="false"
+	upd-action="CASCADE"
+	del-action="RESTRICT">
+	<label ref-type="name-label">
+		<position x="5.29896" y="-29.2823"/>
+	</label>
+</relationship>
+
+<relationship name="employee_has_profee" type="rel1n" layer="0"
+	 src-col-pattern="employee"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#5f51b4"
+	 src-table="public.employee"
+	 dst-table="public.profee"
+	 src-required="true" dst-required="false"
+	upd-action="CASCADE"
+	del-action="RESTRICT">
+	<label ref-type="name-label">
+		<position x="-12.1926" y="-18.0823"/>
+	</label>
+</relationship>
+
+<constraint name="uq_fee_receipt" type="uq-constr" table="public.profee">
+	<columns names="employee,receiptType,receiptSerie,receiptNumber" ref-type="src-columns"/>
+</constraint>
+
+<function name="payroll_detail_onupdate"
+		window-func="false"
+		returns-setof="false"
+		behavior-type="CALLED ON NULL INPUT"
+		function-type="VOLATILE"
+		security-type="SECURITY INVOKER"
+		execution-cost="1"
+		row-amount="0">
+	<schema name="public"/>
+	<comment><![CDATA[Checks if a payroll to update is closed. Raises an exception if so.]]></comment>
+	<language name="plpgsql"/>
+	<return-type>
+	<type name="trigger" length="0"/>
+	</return-type>
+	<definition><![CDATA[BEGIN
+	IF OLD.closed = TRUE THEN
+		RAISE EXCEPTION 'Payroll detail has been closed. Cannot modify.';
+	END IF;
+	RETURN NEW;
+END;]]></definition>
+</function>
+
+<function name="payroll_closure"
+		window-func="false"
+		returns-setof="false"
+		behavior-type="CALLED ON NULL INPUT"
+		function-type="VOLATILE"
+		security-type="SECURITY INVOKER"
+		execution-cost="1"
+		row-amount="0">
+	<schema name="public"/>
+	<comment><![CDATA[Checks if a payroll that is about to be modified has closure date. Raises an exception if so.]]></comment>
+	<language name="plpgsql"/>
+	<return-type>
+	<type name="trigger" length="0"/>
+	</return-type>
+	<definition><![CDATA[BEGIN
+	IF OLD.closure IS NOT NULL THEN
+		RAISE EXCEPTION 'The payroll has been closed on %, thus cannot be changed', OLD.closure;
+	END IF;
+	RETURN NEW;
+END;]]></definition>
+</function>
+
+<function name="profee_closed"
+		window-func="false"
+		returns-setof="false"
+		behavior-type="CALLED ON NULL INPUT"
+		function-type="VOLATILE"
+		security-type="SECURITY INVOKER"
+		execution-cost="1"
+		row-amount="0">
+	<schema name="public"/>
+	<language name="plpgsql"/>
+	<return-type>
+	<type name="trigger" length="0"/>
+	</return-type>
+	<definition><![CDATA[BEGIN
+	IF OLD.closure IS NOT NULL THEN
+		RAISE EXCEPTION 'Professional fee was closed on %. Cannot update', OLD.closure;
+	END IF;
+	RETURN NEW;
+END;]]></definition>
+</function>
+
+<trigger name="profee_beforeupdate" firing-type="BEFORE" per-line="true" constraint="false"
+	 ins-event="false" del-event="false" upd-event="true" trunc-event="false"
+	 table="public.profee">
+		<function signature="public.profee_closed()"/>
+</trigger>
+
+<trigger name="payroll_beforeupdate" firing-type="BEFORE" per-line="true" constraint="false"
+	 ins-event="false" del-event="false" upd-event="true" trunc-event="false"
+	 table="public.payroll">
+		<function signature="public.payroll_closure()"/>
+</trigger>
+
+<trigger name="payroll_detail_beforeupdate" firing-type="BEFORE" per-line="true" constraint="false"
+	 ins-event="false" del-event="false" upd-event="true" trunc-event="false"
+	 table="public.payroll_detail">
+		<function signature="public.payroll_detail_onupdate()"/>
+</trigger>
+
+</dbmodel>
