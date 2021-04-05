@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.3" use-changelog="false" author="David Vidal" last-position="0,0" last-zoom="0.95" max-obj-count="15"
+<dbmodel pgmodeler-ver="0.9.3" use-changelog="false" author="David Vidal" last-position="283,265" last-zoom="0.9" max-obj-count="15"
 	 default-schema="public">
 <database name="ponusdb" encoding="UTF8" is-template="false" allow-conns="true">
 </database>
@@ -109,7 +109,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="public"/>
 </sequence>
 
-<table name="employee" layer="0" collapse-mode="1" max-obj-count="24" z-value="0">
+<table name="employee" layer="0" collapse-mode="1" max-obj-count="25" z-value="0">
 	<schema name="public"/>
 	<tag name="commons"/>
 	<position x="840" y="20"/>
@@ -166,6 +166,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</column>
 	<column name="email" not-null="true">
 		<type name="varchar" length="320"/>
+	</column>
+	<column name="vidaplus">
+		<type name="boolean" length="0"/>
+		<comment><![CDATA[Flag, if true worker should pay EsSalud+Vida insurance.]]></comment>
 	</column>
 	<constraint name="Employee_pk" type="pk-constr" table="public.employee">
 		<columns names="id" ref-type="src-columns"/>
@@ -341,7 +345,7 @@ ADMIN•ADMINISTRATIVO•FALSE⸣
 	</label>
 </relationship>
 
-<table name="attendance" layer="0" collapse-mode="1" pagination="true" attribs-page="0" ext-attribs-page="0" max-obj-count="10" z-value="0">
+<table name="attendance" layer="0" collapse-mode="1" pagination="true" attribs-page="0" ext-attribs-page="0" max-obj-count="12" z-value="0">
 	<schema name="public"/>
 	<tag name="attendance"/>
 	<position x="1400" y="620"/>
@@ -368,6 +372,9 @@ ADMIN•ADMINISTRATIVO•FALSE⸣
 	</column>
 	<column name="night" not-null="true">
 		<type name="decimal" length="8" precision="6"/>
+	</column>
+	<column name="online" not-null="true">
+		<type name="boolean" length="0"/>
 	</column>
 	<constraint name="attendance_pk" type="pk-constr" table="public.attendance">
 		<columns names="id" ref-type="src-columns"/>
