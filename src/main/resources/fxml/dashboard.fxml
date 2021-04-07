@@ -86,18 +86,6 @@
                                     </HBox>
                                  </content>
                             </Tab>
-                              <Tab text="Catálogos">
-                                 <tooltip>
-                                    <Tooltip text="Texto">
-                                       <graphic>
-                                          <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
-                                       </graphic>
-                                    </Tooltip>
-                                 </tooltip>
-                                 <content>
-                                    <HBox prefHeight="100.0" prefWidth="200.0" />
-                                 </content>
-                              </Tab>
                           </tabs>
                         </TabPane>
                      </children>
