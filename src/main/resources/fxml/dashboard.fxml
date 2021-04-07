@@ -4,82 +4,161 @@
 <?import javafx.scene.Group?>
 <?import javafx.scene.Scene?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Text?>
 <?import javafx.stage.Stage?>
 
-
-<Stage maximized="true" title="Ponus App::Dashboard" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<Stage maximized="true" title="Proyecto Ponus - v1.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <scene>
       <Scene>
          <root>
             <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0">
                <top>
-                  <TabPane maxWidth="1.7976931348623157E308" style="-fx-border-style: SOLID;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-                    <tabs>
-                      <Tab text="1">
-                           <content>
-                              <FlowPane hgap="5.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="75.0" prefWrapLength="0.0" vgap="5.0" />
-                           </content>
-                           <graphic>
-                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
-                           </graphic>
-                           <tooltip>
-                              <Tooltip text="Texto">
-                                 <graphic>
-                                    <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                              </Tooltip>
-                           </tooltip>
-                      </Tab>
-                    </tabs>
-                  </TabPane>
+                  <VBox BorderPane.alignment="CENTER">
+                     <children>
+                        <MenuBar VBox.vgrow="NEVER">
+                          <menus>
+                            <Menu mnemonicParsing="false" text="File">
+                              <items>
+                                <MenuItem mnemonicParsing="false" text="Close" />
+                              </items>
+                            </Menu>
+                            <Menu mnemonicParsing="false" text="Edit">
+                              <items>
+                                <MenuItem mnemonicParsing="false" text="Delete" />
+                              </items>
+                            </Menu>
+                            <Menu mnemonicParsing="false" text="Help">
+                              <items>
+                                <MenuItem mnemonicParsing="false" text="About" />
+                              </items>
+                            </Menu>
+                          </menus>
+                        </MenuBar>
+                        <TabPane maxWidth="1.7976931348623157E308" style="-fx-border-style: SOLID;" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+                          <tabs>
+                            <Tab text="Planilla">
+                                 <tooltip>
+                                    <Tooltip text="Texto">
+                                       <graphic>
+                                          <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                                       </graphic>
+                                    </Tooltip>
+                                 </tooltip>
+                                 <content>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                                       <children>
+                                          <Button contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="74.0" text="ABC">
+                                             <graphic>
+                                                <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                                             </graphic>
+                                             <tooltip>
+                                                <Tooltip text="Texto">
+                                                   <graphic>
+                                                      <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                                                   </graphic>
+                                                </Tooltip>
+                                             </tooltip>
+                                          </Button>
+                                       </children>
+                                       <padding>
+                                          <Insets left="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </content>
+                            </Tab>
+                              <Tab text="Catálogos">
+                                 <tooltip>
+                                    <Tooltip text="Texto">
+                                       <graphic>
+                                          <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                                       </graphic>
+                                    </Tooltip>
+                                 </tooltip>
+                                 <content>
+                                    <HBox prefHeight="100.0" prefWidth="200.0" />
+                                 </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
+                     </children>
+                  </VBox>
                </top>
                <left>
                   <Group BorderPane.alignment="CENTER">
                      <children>
-                        <Label layoutY="134.0" rotate="270.0" style="-fx-font-weight: BOLD;" text="PONUS DASHBOARD" textAlignment="CENTER">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </Label>
+                        <Text rotate="270.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bolder; -fx-font-size: 18px;" text="::PONUS DASHBOARD::">
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="0.007407407407407408">
+                                       <color>
+                                          <Color />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="0.22592592592592597">
+                                       <color>
+                                          <Color red="0.22871994972229004" green="0.05360623821616173" blue="0.5789473652839661" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="0.4737037037037036">
+                                       <color>
+                                          <Color red="0.595678985118866" green="0.39351850748062134" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="0.7444444444444446">
+                                       <color>
+                                          <Color red="0.35026803612709045" green="0.03198099508881569" blue="0.9868420958518982" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="0.01315789483487606" green="0.013036062009632587" blue="0.013036062009632587" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </Text>
                      </children>
                   </Group>
                </left>
                <center>
-                  <SplitPane dividerPositions="0.27, 0.75" prefHeight="160.0" prefWidth="200.0" style="-fx-border-style: SOLID;" BorderPane.alignment="CENTER">
+                  <SplitPane dividerPositions="0.25, 0.75" prefHeight="160.0" prefWidth="200.0" style="-fx-border-style: SOLID;" BorderPane.alignment="CENTER">
                      <items>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0">
                            <children>
                               <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" VBox.vgrow="NEVER">
                                  <children>
-                                    <Button contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+                                    <Hyperlink contentDisplay="RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" text="Empleados:" />
+                                    <TextField maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefColumnCount="5" prefHeight="32.0" promptText="buscar..." HBox.hgrow="ALWAYS" />
+                                    <Button contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0">
                                        <tooltip>
-                                          <Tooltip text="Texto">
-                                             <graphic>
-                                                <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
-                                             </graphic>
-                                          </Tooltip>
-                                       </tooltip>
-                                       <graphic>
-                                          <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
-                                       </graphic>
-                                    </Button>
-                                    <Label text="Empleados:" />
-                                    <TextField maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefColumnCount="7" prefHeight="25.0" HBox.hgrow="ALWAYS" />
-                                    <Button contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
-                                       <tooltip>
-                                          <Tooltip text="Texto">
+                                          <Tooltip text="Listar empleados.">
                                              <graphic>
                                                 <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
                                              </graphic>
@@ -94,8 +173,77 @@
                               <ListView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0" />
-                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" />
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0">
+                           <children>
+                              <HBox maxWidth="1.7976931348623157E308">
+                                 <children>
+                                    <Hyperlink maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" text="Asistencia:" />
+                                    <DatePicker maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="32.0" HBox.hgrow="ALWAYS" />
+                                    <Button contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0">
+                                       <tooltip>
+                                          <Tooltip text="Listar empleados.">
+                                             <graphic>
+                                                <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                                             </graphic>
+                                          </Tooltip>
+                                       </tooltip>
+                                       <graphic>
+                                          <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                                <columns>
+                                  <TableColumn maxWidth="1.7976931348623157E308" prefWidth="250.0" text="Empleado" />
+                                    <TableColumn maxWidth="1.7976931348623157E308" prefWidth="-1.0" text="Hora de">
+                                       <columns>
+                                        <TableColumn maxWidth="1.7976931348623157E308" prefWidth="75.0" text="Entrada" />
+                                          <TableColumn maxWidth="1.7976931348623157E308" prefWidth="75.0" text="Salida" />
+                                       </columns>
+                                    </TableColumn>
+                                    <TableColumn maxWidth="1.7976931348623157E308" prefWidth="-1.0" text="Horas Totales Laboradas">
+                                       <columns>
+                                          <TableColumn maxWidth="1.7976931348623157E308" prefWidth="75.0" text="Normales" />
+                                          <TableColumn maxWidth="1.7976931348623157E308" prefWidth="75.0" text="E 25%" />
+                                          <TableColumn maxWidth="1.7976931348623157E308" prefWidth="75.0" text="E 35%" />
+                                          <TableColumn maxWidth="1.7976931348623157E308" prefWidth="75.0" text="Noche" />
+                                          <TableColumn maxWidth="1.7976931348623157E308" prefWidth="75.0" text="Feriado" />
+                                       </columns>
+                                    </TableColumn>
+                                </columns>
+                              </TableView>
+                           </children></VBox>
+                        <VBox layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0">
+                           <children>
+                              <HBox maxWidth="1.7976931348623157E308">
+                                 <children>
+                                    <Hyperlink maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" text="Movilidad:" />
+                                    <DatePicker maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="32.0" prefWidth="75.0" HBox.hgrow="ALWAYS" />
+                                    <Button contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0">
+                                       <tooltip>
+                                          <Tooltip text="Listar empleados.">
+                                             <graphic>
+                                                <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                                             </graphic>
+                                          </Tooltip>
+                                       </tooltip>
+                                       <graphic>
+                                          <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                                 <columns>
+                                    <TableColumn maxWidth="1.7976931348623157E308" prefWidth="175.0" text="Empleado" />
+                                    <TableColumn maxWidth="1.7976931348623157E308" prefWidth="125.0" text="Monto" />
+                                    <TableColumn maxWidth="1.7976931348623157E308" prefWidth="250.0" text="Ruta" />
+                                    <TableColumn maxWidth="1.7976931348623157E308" prefWidth="250.0" text="Notas" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </VBox>
                      </items>
                   </SplitPane>
                </center>
