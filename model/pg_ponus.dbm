@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.3" use-changelog="false" author="David Vidal" last-position="283,265" last-zoom="0.9" max-obj-count="15"
+<dbmodel pgmodeler-ver="0.9.3" use-changelog="false" author="David Vidal" last-position="42,0" last-zoom="0.9" max-obj-count="16"
 	 default-schema="public">
 <database name="ponusdb" encoding="UTF8" is-template="false" allow-conns="true">
 </database>
@@ -109,7 +109,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="public"/>
 </sequence>
 
-<table name="employee" layer="0" collapse-mode="1" max-obj-count="25" z-value="0">
+<table name="employee" layer="0" collapse-mode="1" max-obj-count="27" z-value="0">
 	<schema name="public"/>
 	<tag name="commons"/>
 	<position x="840" y="20"/>
@@ -136,6 +136,9 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</column>
 	<column name="cci">
 		<type name="char" length="20"/>
+	</column>
+	<column name="account">
+		<type name="varchar" length="20"/>
 	</column>
 	<column name="taxation" not-null="true">
 		<type name="public.tax_role" length="0"/>
@@ -176,11 +179,13 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 
 	<customidxs object-type="column">
+		<object name="bank" index="8"/>
 		<object name="doiType" index="5"/>
-		<object name="retirement" index="13"/>
+		<object name="retirement" index="15"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
+		<object name="bank_fk" index="3"/>
 		<object name="type_doi_fk" index="1"/>
 		<object name="type_retire_fk" index="2"/>
 	</customidxs>
@@ -547,7 +552,7 @@ ADMIN•ADMINISTRATIVO•FALSE⸣
 <table name="payroll" layer="0" collapse-mode="1" max-obj-count="44" z-value="0">
 	<schema name="public"/>
 	<tag name="payroll"/>
-	<position x="400" y="0"/>
+	<position x="40" y="360"/>
 	<column name="id" not-null="true" sequence="public.sq_payroll">
 		<type name="bigint" length="0"/>
 	</column>
@@ -768,7 +773,7 @@ ADMIN•ADMINISTRATIVO•FALSE⸣
 	upd-action="CASCADE"
 	del-action="RESTRICT">
 	<label ref-type="name-label">
-		<position x="-33.4939" y="17.2132"/>
+		<position x="76.1667" y="-9.68226"/>
 	</label>
 </relationship>
 
@@ -988,5 +993,42 @@ END;]]></definition>
 	 table="public.payroll_detail">
 		<function signature="public.payroll_detail_onupdate()"/>
 </trigger>
+
+<sequence name="sq_bank_id" cycle="false" start="1" increment="1" min-value="0" max-value="2147483647" cache="1">
+	<schema name="public"/>
+</sequence>
+
+<table name="bank" layer="0" collapse-mode="1" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<tag name="commons"/>
+	<position x="480" y="20"/>
+	<column name="id" not-null="true" sequence="public.sq_bank_id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="title" not-null="true">
+		<type name="varchar" length="45"/>
+	</column>
+	<column name="taxID" not-null="true">
+		<type name="char" length="3"/>
+	</column>
+	<constraint name="bank_pk" type="pk-constr" table="public.bank">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="employee_uses_bank" type="rel1n" layer="0"
+	 src-col-pattern="bank"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#bfb525"
+	 src-table="public.bank"
+	 dst-table="public.employee"
+	 src-required="true" dst-required="false"
+	upd-action="CASCADE"
+	del-action="RESTRICT">
+	<label ref-type="name-label">
+		<position x="-6.64043" y="-15.9153"/>
+	</label>
+</relationship>
 
 </dbmodel>

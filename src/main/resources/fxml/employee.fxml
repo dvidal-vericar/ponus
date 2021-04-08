@@ -15,13 +15,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.stage.Stage?>
-
 
 <Stage title="Tarjeta del Trabajador" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <scene>
@@ -35,7 +37,83 @@
                <header>
                   <ToolBar>
                     <items>
-                      <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0" text="Button" />
+                      <Button contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0">
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@ico/calendar_24.png" />
+                                 </image></ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Registro de Asistencia.">
+                                 <graphic>
+                                    <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@ico/calendar_64.png" />
+                                       </image></ImageView>
+                                 </graphic>
+                              </Tooltip>
+                           </tooltip></Button>
+                        <Button contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0">
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@ico/paycheck_24.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Boletas de pago.">
+                                 <graphic>
+                                    <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@ico/paycheck_64.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Tooltip>
+                           </tooltip>
+                        </Button>
+                        <Button contentDisplay="GRAPHIC_ONLY" layoutX="46.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0">
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@ico/receipt_24.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Recibos por Honorarios.">
+                                 <graphic>
+                                    <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@ico/receipt_64.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Tooltip>
+                           </tooltip>
+                        </Button>
+                        <Button contentDisplay="GRAPHIC_ONLY" layoutX="82.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0">
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@ico/transport_24.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Gastos de Movilidad.">
+                                 <graphic>
+                                    <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@ico/transport_64.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Tooltip>
+                           </tooltip>
+                        </Button>
                     </items>
                   </ToolBar>
                </header>
@@ -69,16 +147,17 @@
                                           <TextField maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="32.0" promptText="Primer Nombre" style="-fx-font-family: MONOSPACE;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                           <TextField maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="32.0" promptText="Segundo Nombre" style="-fx-font-family: MONOSPACE;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                           <Label maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="32.0" text="Identificación:" GridPane.rowIndex="3" />
-                                          <ComboBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="32.0" promptText="Tipo" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                          <TextField maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="32.0" promptText="Número" style="-fx-font-family: MONOSPACE;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                          <FlowPane alignment="CENTER_LEFT" hgap="5.0" maxWidth="1.7976931348623157E308" prefWrapLength="0.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="3">
+                                             <children>
+                                                <ComboBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="32.0" prefWidth="75.0" promptText="Tipo" />
+                                                <TextField maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefColumnCount="20" prefHeight="32.0" promptText="Número" style="-fx-font-family: MONOSPACE;" />
+                                             </children>
+                                          </FlowPane>
                                           <Label maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="32.0" text="E-mail:" GridPane.rowIndex="4" />
                                           <TextField maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="32.0" promptText="abc@def.com" style="-fx-font-family: MONOSPACE;" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="4" />
                                        </children>
                                     </GridPane>
                                  </content>
-                                 <padding>
-                                    <Insets top="5.0" />
-                                 </padding>
                               </TitledPane>
                             <TitledPane text="Datos Tributarios">
                                  <content>
@@ -113,13 +192,13 @@
                                                    </children>
                                                 </FlowPane>
                                              </children>
+                                             <padding>
+                                                <Insets top="5.0" />
+                                             </padding>
                                           </GridPane>
                                        </content>
                                     </ScrollPane>
                                  </content>
-                                 <padding>
-                                    <Insets top="5.0" />
-                                 </padding>
                               </TitledPane>
                               <TitledPane prefHeight="200.0" prefWidth="200.0" text="Datos Financieros">
                                  <content>
@@ -155,13 +234,13 @@
                                                 <Label maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="32.0" text="Retenciones 5ta:" GridPane.rowIndex="6" />
                                                 <TextField editable="false" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="32.0" promptText="0.00" style="-fx-font-family: MONOSPACE; -fx-alignment: CENTER_RIGHT;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                                              </children>
+                                             <padding>
+                                                <Insets top="5.0" />
+                                             </padding>
                                           </GridPane>
                                        </content>
                                     </ScrollPane>
                                  </content>
-                                 <padding>
-                                    <Insets top="5.0" />
-                                 </padding>
                               </TitledPane>
                               <TitledPane prefHeight="200.0" prefWidth="200.0" text="Otros Datos">
                                  <content>
@@ -185,15 +264,15 @@
                                                 <DatePicker maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                 <Hyperlink maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="32.0" text="Archivo Cloud:" GridPane.rowIndex="2" />
                                                 <TextField editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefColumnCount="10" prefHeight="32.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <CheckBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" prefHeight="32.0" text="Eliminado" GridPane.rowIndex="3" />
+                                                <CheckBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="32.0" text="Eliminado" GridPane.rowIndex="3" />
                                              </children>
+                                             <padding>
+                                                <Insets top="5.0" />
+                                             </padding>
                                           </GridPane>
                                        </content>
                                     </ScrollPane>
                                  </content>
-                                 <padding>
-                                    <Insets top="5.0" />
-                                 </padding>
                               </TitledPane>
                           </panes>
                         </Accordion>
