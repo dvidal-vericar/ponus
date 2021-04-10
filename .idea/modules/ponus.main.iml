@@ -11,8 +11,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Gradle: org.openjfx:javafx-web:linux:16" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-fxml:linux:16" level="project" />
+    <orderEntry type="library" name="Gradle: org.openjfx:javafx-web:linux:16" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-controls:16" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-controls:linux:16" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-media:16" level="project" />

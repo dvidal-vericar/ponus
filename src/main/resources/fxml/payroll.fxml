@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.stage.Stage?>
+
+<Stage title="Maestra de Boletas de Pago" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+    <scene>
+        <Scene>
+         <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="920.0">
+            <children>
+               <ToolBar maxWidth="1.7976931348623157E308">
+                 <items>
+                     <Hyperlink maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" text="Período:" />
+                     <ComboBox editable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="100.0" />
+                   <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0">
+                        <tooltip>
+                           <Tooltip maxWidth="360.0" text="Descargar boletas del período seleccionado." wrapText="true">
+                              <graphic>
+                                 <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@ico/download_64.png" />
+                                    </image>
+                                 </ImageView>
+                              </graphic>
+                           </Tooltip>
+                        </tooltip>
+                        <graphic>
+                           <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@ico/download_24.png" />
+                              </image>
+                           </ImageView>
+                        </graphic>
+                     </Button>
+                     <Separator orientation="VERTICAL" />
+                     <Button layoutX="172.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0">
+                        <tooltip>
+                           <Tooltip maxWidth="360.0" text="Crear boletas para el período." wrapText="true">
+                              <graphic>
+                                 <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@ico/robot_64.png" />
+                                    </image>
+                                 </ImageView>
+                              </graphic>
+                           </Tooltip>
+                        </tooltip>
+                        <graphic>
+                           <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@ico/robot_24.png" />
+                              </image>
+                           </ImageView>
+                        </graphic>
+                     </Button>
+                     <Button layoutX="222.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0">
+                        <tooltip>
+                           <Tooltip maxWidth="360.0" text="Generar informe mensual en la nube." wrapText="true">
+                              <graphic>
+                                 <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@ico/google_64.png" />
+                                    </image>
+                                 </ImageView>
+                              </graphic>
+                           </Tooltip>
+                        </tooltip>
+                        <graphic>
+                           <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@ico/google_24.png" />
+                              </image>
+                           </ImageView>
+                        </graphic>
+                     </Button>
+                 </items>
+               </ToolBar>
+               <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                 <columns>
+                   <TableColumn maxWidth="1.7976931348623157E308" prefWidth="-1.0" text="Trabajador">
+                        <columns>
+                           <TableColumn maxWidth="1.7976931348623157E308" prefWidth="75.0" text="Código" />
+                           <TableColumn maxWidth="1.7976931348623157E308" prefWidth="75.0" text="DOI" />
+                           <TableColumn maxWidth="1.7976931348623157E308" prefWidth="175.0" text="Nombre" />
+                        </columns>
+                     </TableColumn>
+                     <TableColumn maxWidth="1.7976931348623157E308" prefWidth="-1.0" text="Días Totales">
+                        <columns>
+                           <TableColumn maxWidth="1.7976931348623157E308" prefWidth="100.0" style="-fx-alignment: CENTER_RIGHT;" text="Trabajados" />
+                           <TableColumn maxWidth="1.7976931348623157E308" prefWidth="100.0" style="-fx-alignment: CENTER_RIGHT;" text="Faltas" />
+                           <TableColumn maxWidth="1.7976931348623157E308" prefWidth="100.0" style="-fx-alignment: CENTER_RIGHT;" text="F. Pagada" />
+                        </columns>
+                     </TableColumn>
+                     <TableColumn maxWidth="1.7976931348623157E308" prefWidth="-1.0" text="Horas Totales">
+                        <columns>
+                           <TableColumn maxWidth="1.7976931348623157E308" prefWidth="100.0" style="-fx-alignment: CENTER_RIGHT;" text="Normales" />
+                           <TableColumn maxWidth="1.7976931348623157E308" prefWidth="100.0" style="-fx-alignment: CENTER_RIGHT;" text="Extra 25%" />
+                           <TableColumn maxWidth="1.7976931348623157E308" prefWidth="100.0" style="-fx-alignment: CENTER_RIGHT;" text="Extra 35%" />
+                           <TableColumn maxWidth="1.7976931348623157E308" prefWidth="100.0" style="-fx-alignment: CENTER_RIGHT;" text="Noche" />
+                           <TableColumn maxWidth="1.7976931348623157E308" prefWidth="100.0" style="-fx-alignment: CENTER_RIGHT;" text="Feriado" />
+                        </columns>
+                     </TableColumn>
+                     <TableColumn maxWidth="1.7976931348623157E308" prefWidth="-1.0" text="Montos Totales">
+                        <columns>
+                           <TableColumn maxWidth="1.7976931348623157E308" prefWidth="125.0" style="-fx-alignment: CENTER_RIGHT;" text="Ingresos" />
+                           <TableColumn maxWidth="1.7976931348623157E308" prefWidth="125.0" style="-fx-alignment: CENTER_RIGHT;" text="Descuentos" />
+                           <TableColumn maxWidth="1.7976931348623157E308" prefWidth="125.0" style="-fx-alignment: CENTER_RIGHT;" text="Neto" />
+                           <TableColumn maxWidth="1.7976931348623157E308" prefWidth="125.0" style="-fx-alignment: CENTER_RIGHT;" text="Empleador" />
+                           <TableColumn maxWidth="1.7976931348623157E308" prefWidth="125.0" style="-fx-alignment: CENTER_RIGHT;" text="Costo" />
+                        </columns>
+                     </TableColumn>
+                 </columns>
+               </TableView>
+            </children></VBox>
+        </Scene>
+    </scene>
+</Stage>

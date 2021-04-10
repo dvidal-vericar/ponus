@@ -1,0 +1,4 @@
+.bottomLine{
+    -fx-border-style: none none solid none;
+    -fx-border-width: 1px;
+}

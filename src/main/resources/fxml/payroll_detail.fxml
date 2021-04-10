@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+
+<DialogPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="600.0" stylesheets="@ponusfx.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <buttonTypes>
+      <ButtonType fx:constant="APPLY" />
+      <ButtonType fx:constant="CLOSE" />
+   </buttonTypes>
+   <header>
+      <VBox styleClass="bottomLine">
+         <children>
+            <TextFlow maxWidth="1.7976931348623157E308" textAlignment="CENTER" VBox.vgrow="NEVER">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Boleta de Pago Nº:" />
+                  <Text fill="#0a17a1" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: MONOSPACE; -fx-fill: #0a17a1; -fx-font-weight: BOLD;" text="0000" />
+               </children>
+            </TextFlow>
+            <FlowPane hgap="5.0" prefWrapLength="0.0">
+               <children>
+                  <Label maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" text="Empleador:" />
+                  <TextField editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefColumnCount="8" prefHeight="32.0" promptText="12345678901" />
+                  <TextField editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefColumnCount="23" prefHeight="32.0" />
+                  <Hyperlink maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" text="Dirección" wrapText="true" />
+               </children>
+            </FlowPane>
+         </children>
+         <padding>
+            <Insets bottom="5.0" />
+         </padding>
+      </VBox>
+   </header>
+   <content>
+      <Accordion>
+        <panes>
+          <TitledPane animated="false" text="Período" />
+          <TitledPane animated="false" text="Empleado" />
+            <TitledPane prefHeight="200.0" prefWidth="200.0" text="Totales de Boleta" />
+            <TitledPane prefHeight="200.0" prefWidth="200.0" text="Detalle de Conceptos">
+               <content>
+                  <TreeTableView prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true">
+                    <columns>
+                      <TreeTableColumn prefWidth="105.0" text="Descripción" />
+                      <TreeTableColumn prefWidth="75.0" text="Monto" />
+                        <TreeTableColumn prefWidth="100.0" text="Renta" />
+                        <TreeTableColumn prefWidth="100.0" text="Salud" />
+                        <TreeTableColumn prefWidth="100.0" text="Pensión" />
+                        <TreeTableColumn prefWidth="100.0" text="Otro Empleador" />
+                        <TreeTableColumn prefWidth="100.0" text="ID PLAME" />
+                    </columns>
+                  </TreeTableView>
+               </content>
+            </TitledPane>
+        </panes>
+      </Accordion>
+   </content>
+</DialogPane>
