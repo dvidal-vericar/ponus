@@ -6,8 +6,12 @@
       <GradleProjectSettings>
         <option name="delegatedBuild" value="true" />
         <option name="testRunner" value="GRADLE" />
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+<<<<<<< HEAD
+=======
+        <option name="gradleHome" value="$PROJECT_DIR$/../../dev/gradle/gradle-6.8.3" />
+>>>>>>> a8c9e1ee280884b54b1b5c6222baf393aa29e480
         <option name="gradleJvm" value="15" />
         <option name="modules">
           <set>
